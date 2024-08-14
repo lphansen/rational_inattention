@@ -1,0 +1,24 @@
+/project/lhansen/rational_inattention/replication_package/src/figure_2.py:148: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 0].plot(index, p[:, 1, 0], '-r', linewidth=2, label=r'$p^*(2|x_1)$',linestyle='dashed')
+/project/lhansen/rational_inattention/replication_package/src/figure_2.py:149: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-k" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 0].plot(index, p[:, 2, 0], '-k', linewidth=2, label=r'$p^*(3|x_1)$',linestyle='dotted')
+/project/lhansen/rational_inattention/replication_package/src/figure_2.py:157: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 1].plot(index, p[:, 1, 1], '-r', linewidth=2, label=r'$p^*(2|x_2)$',linestyle='dashed')
+/project/lhansen/rational_inattention/replication_package/src/figure_2.py:158: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-k" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 1].plot(index, p[:, 2, 1], '-k', linewidth=2, label=r'$p^*(3|x_2)$',linestyle='dotted')
+/project/lhansen/rational_inattention/replication_package/src/figure_2.py:180: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[2, 0].plot(index, mu[:, 1], '-r', linewidth=2, label=r'$\mu^*(x_2)$',linestyle='dashed')
+/project/lhansen/rational_inattention/replication_package/src/figure_2.py:188: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[2, 1].plot(index, q[:, 1], '-r', linewidth=2, label=r'$q^*(x_2)$',linestyle='dashed')
+/project/lhansen/rational_inattention/replication_package/src/figure_3.py:127: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 0].plot(index, p[:, 1, 0], '-r', linewidth=2, label=r'$p^*(2|x_1)$',linestyle='dashed')
+/project/lhansen/rational_inattention/replication_package/src/figure_3.py:128: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-k" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 0].plot(index, p[:, 2, 0], '-k', linewidth=2, label=r'$p^*(3|x_1)$',linestyle='dotted')
+/project/lhansen/rational_inattention/replication_package/src/figure_3.py:136: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 1].plot(index, p[:, 1, 1], '-r', linewidth=2, label=r'$p^*(2|x_2)$',linestyle='dashed')
+/project/lhansen/rational_inattention/replication_package/src/figure_3.py:137: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-k" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[0, 1].plot(index, p[:, 2, 1], '-k', linewidth=2, label=r'$p^*(3|x_2)$',linestyle='dotted')
+/project/lhansen/rational_inattention/replication_package/src/figure_3.py:151: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[1, 1].plot(index, q[:, 1], '-r', linewidth=2, label=r'$q^*(2)$',linestyle='dashed')
+/project/lhansen/rational_inattention/replication_package/src/figure_3.py:152: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-k" (-> linestyle='-'). The keyword argument will take precedence.
+  axs[1, 1].plot(index, q[:, 2], '-k', linewidth=2, label=r'$q^*(3)$',linestyle='dotted')
