@@ -1,4 +1,0 @@
-/project/lhansen/rational_inattention/replication_package/src/figure_2.py:125: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-r" (-> linestyle='-'). The keyword argument will take precedence.
-  ax.plot(index, data2, '-r', linewidth=2, linestyle='dashed', label=label2)
-/project/lhansen/rational_inattention/replication_package/src/figure_2.py:127: UserWarning: linestyle is redundantly defined by the 'linestyle' keyword argument and the fmt string "-k" (-> linestyle='-'). The keyword argument will take precedence.
-  ax.plot(index, data3, '-k', linewidth=2, linestyle='dotted', label=label3)
