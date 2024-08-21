@@ -15,6 +15,11 @@ hat_mu = np.zeros(N)
 hat_mu[0] = 0.5
 hat_mu[1] = 0.5
 
+#Information cost
+kappa_array = [0.1]
+
+# Set of payoff values for x = 1, a = 2. This parameterizes the payoff matrix.
+r_array= [6.0, 6.5, 7.0, 7.5]
 eps = 1e-15  # Error tolerance
 
 
@@ -29,7 +34,6 @@ def utility_function(payoff, alpha):
             return np.log(payoff+1e-7)
         else:
             ValueError("Negative log utility")
-
 
 
 def utility(x, a,alpha,r):
@@ -149,15 +153,12 @@ def inner_objective(xi, Lam,alpha,r):
         entropy = objective_constrained[2]
         return objective, p_constrained,q_constrained, mu[:], information, entropy
         
+
+#Entropy cost. Currently changing these parameters has no effect as only the infinite \xi case is considered.
+eta_array = [0.04]
+xi = 200
         
 
-
-kappa_array = [0.1]
-# kappa_array = [0.7]
-eta_array = [0.04]
-r_array= [6.0, 6.5, 7.0, 7.5]
-r_array= [7.0]
-# r_array=[7.0]
 for r in range(len(r_array)):
     utility_r = r_array[r]
     for k in range(len(kappa_array)):
@@ -170,7 +171,6 @@ for r in range(len(r_array)):
                 Lam_values = np.linspace(1,10,100)
                     
                 
-                xi = 10
 
                 def find_min_Lam(xi):
                     obj = 0

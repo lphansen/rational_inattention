@@ -12,7 +12,7 @@
 
 
 module load python/anaconda-2022.05
-python figure_1.py
+# python figure_1.py
 python figure_2.py
-python figure_3.py
-python figure_4.py
+# python figure_3.py
+# python figure_4.py

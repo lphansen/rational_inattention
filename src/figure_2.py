@@ -112,12 +112,15 @@ configurations = [
     (axs[1, 0], I, None, None, 'Mutual information $I$', None, None, None),
     (axs[1, 1], R, None, None, 'Relative entropy $R$', None, None, None),
     (axs[2, 0], mu[:, 0], mu[:, 1], None, 'Worst case prior $\mu^*$', r'$\mu^*(x_1)$', r'$\mu^*(x_2)$', None),
-    (axs[2, 1], q[:, 0], q[:, 1], None, 'Worst case $q^*$', r'$q^*(x_1)$', r'$q^*(x_2)$', None)
+    (axs[2, 1], q[:, 0], q[:, 1], q[:, 2], 'Worst case $q^*$', r'$q^*(x_1)$', r'$q^*(x_2)$', r'$q^*(x_3)$')
 ]
 
 # Plot each subplot
 for ax, data1, data2, data3, title, label1, label2, label3 in configurations:
-    ax.plot(index, data1, '-b', linewidth=2, label=label1)
+    if data3 is not None:
+        ax.plot(index, data1, '-b', linewidth=2, label=label1)
+    else:
+        ax.plot(index, data1, '-k', linewidth=2, label=label1)
     if data2 is not None:
         ax.plot(index, data2, '-r', linewidth=2, linestyle='dashed', label=label2)
     if data3 is not None:
@@ -137,8 +140,11 @@ axs[1, 1].set_ylim(-0.01, 0.15)
 # Finalize and save the figure
 plt.tight_layout()
 results = {'p': p, 'mu': mu, 'q': q, 'R': R, 'I': I}
-plt.savefig("../plots/figure_2.png", dpi=300)
-np.savez("../results/figure_2.npz", results)
+# plt.savefig("../plots/figure_2.png", dpi=300)
+# np.savez("../results/figure_2.npz", results)
+
+plt.savefig("../plots/figure_2_appdx.png", dpi=300)
+np.savez("../results/figure_2_appdx.npz", results)
 
 # Close the plot to free up resources
 plt.close()

@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Notebook: Robust Inattentive Discrete Choice &#8212; Rational Inattention</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Rational Inattention</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Notebook: Robust Inattentive Discrete Choice</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Notebook: Robust Inattentive Discrete Choice</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#base-case">1 Base Case</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-code-overview">1.1 Solution Code Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">1.2 Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">1.3 Plotting</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-constraint">2 Mutual Information Constraint</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-overview">2.1 Solution Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2 Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3 Plotting</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &lt;a href=&quot;https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/expansion_suite.ipynb&quot; target=&quot;_parent&quot;&gt;&lt;img src=&quot;https://colab.research.google.com/assets/colab-badge.svg&quot; alt=&quot;Open In Colab&quot;/&gt;&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="notebook-robust-inattentive-discrete-choice">
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">Notebook: Robust Inattentive Discrete Choice</a><a class="headerlink" href="#notebook-robust-inattentive-discrete-choice" title="Link to this heading">#</a></h1>
+<p><strong>Authors:</strong> Lars Peter Hansen, Jianjun Miao, and Hao Xing</p>
+<p>This notebook describes the code used to solve the following problem described in Section 5 of the paper:</p>
+<div class="math notranslate nohighlight">
+\[
+\max_{p \in \Delta(A|X),q \in \Delta(A)} \min_{\mu \in \Delta(X)} \sum_x{ \mu(x) \left[ G(p,q)(x)+\xi \log{\frac{\mu(x)}{\hat{\mu}(x)}}  \right] }
+\]</div>
+<p>Where:</p>
+<div class="math notranslate nohighlight">
+\[
+G(p,q)(x) = \sum_a{p(a|x)\left[u(x,a)-\lambda \log{\frac{p(a|x)}{q(a)}}\right]}
+\]</div>
+<p>Using the numerical algorithm from Section 3. It is divided into two sections: the first section applies the algorithm for a given set of <span class="math notranslate nohighlight">\((\alpha,\lambda,\xi)\)</span>, while the second section constrains the information by <span class="math notranslate nohighlight">\(\kappa\)</span> and calculates the optimal <span class="math notranslate nohighlight">\(\lambda\)</span> for a given set <span class="math notranslate nohighlight">\((\alpha,\xi)\)</span>.</p>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#notebook-robust-inattentive-discrete-choice" id="id3">Notebook: Robust Inattentive Discrete Choice</a></p></li>
+<li><p><a class="reference internal" href="#base-case" id="id4">1 Base Case</a></p>
+<ul>
+<li><p><a class="reference internal" href="#solution-code-overview" id="id5">1.1 Solution Code Overview</a></p></li>
+<li><p><a class="reference internal" href="#quick-start" id="id6">1.2 Quick Start</a></p></li>
+<li><p><a class="reference internal" href="#plotting" id="id7">1.3 Plotting</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#mutual-information-constraint" id="id8">2 Mutual Information Constraint</a></p>
+<ul>
+<li><p><a class="reference internal" href="#solution-overview" id="id9">2.1 Solution Overview</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id10">2.2 Quick Start</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id11">2.3 Plotting</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="base-case">
+<h1><a class="toc-backref" href="#id4" role="doc-backlink">1 Base Case</a><a class="headerlink" href="#base-case" title="Link to this heading">#</a></h1>
+<section id="solution-code-overview">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1.1 Solution Code Overview</a><a class="headerlink" href="#solution-code-overview" title="Link to this heading">#</a></h2>
+<p>The function <code class="docutils literal notranslate"><span class="pre">solve</span></code> implements the numerical algorithm for a given set of parameters, and outputs the solution and related objects of interest.</p>
+<p>First, the user should specify the values of <span class="math notranslate nohighlight">\(\alpha,\lambda,\xi\)</span> over which <code class="docutils literal notranslate"><span class="pre">solve</span></code> should be evaluated. Each of these are arrays of type <code class="docutils literal notranslate"><span class="pre">float</span></code>. Each array can have different lengths.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Array</p></th>
+<th class="head"><p>Domain restrictions</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">alpha_array</span></code></p></td>
+<td><p>0 to 1</p></td>
+<td><p>Coefficient of risk aversion, where <span class="math notranslate nohighlight">\(\alpha=0\)</span> is the <em>linear utility</em> and values close to <span class="math notranslate nohighlight">\(1\)</span> approximate the <em>log utility</em> case</p></td>
+<td><p>10 evenly spaced points from 0 to 0.9</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Lam_array</span></code></p></td>
+<td><p>Greater or equal to 1 (less than 1 causes convergence issues)</p></td>
+<td><p>Information cost, where large values, e.g. <span class="math notranslate nohighlight">\(\mathbb{I}=100\)</span>, approximate <em>zero information cost</em></p></td>
+<td><p>[10.0]</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xi_array</span></code></p></td>
+<td><p>Greater or equal to 1</p></td>
+<td><p>Robustness parameter, where large values, e.g. <span class="math notranslate nohighlight">\(\mathbb{R}=100\)</span>, approximate <em>no robustness adjustment</em></p></td>
+<td><p>10 evenly spaced points from 1 to 100</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Second, the user should specify the following parameters:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p><em>int</em></p></td>
+<td><p>Number of <strong>states</strong></p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M</span></code></p></td>
+<td><p><em>int</em></p></td>
+<td><p>Number of <strong>actions</strong></p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hat_mu</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(N \times 1\)</span> <em>ndarray</em></p></td>
+<td><p><strong>Baseline prior</strong>: does not affect the solution in this model</p></td>
+<td><p>Uniform prior</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">eps</span></code></p></td>
+<td><p><em>float</em></p></td>
+<td><p><strong>Tolerance</strong>: the higher the tolerance, the more accurate the solution but the longer the computation time. Tolerance of <span class="math notranslate nohighlight">\(10^{-6}\)</span> or lower is recommended as a baseline</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-6}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">q_step</span></code>,<code class="docutils literal notranslate"><span class="pre">p_step</span></code>,<code class="docutils literal notranslate"><span class="pre">mu_step</span></code></p></td>
+<td><p><em>float</em></p></td>
+<td><p><strong>Step-size</strong>: for each variable <span class="math notranslate nohighlight">\(x \in \{p,q,\mu\}\)</span> in the algorithm. The larger the step-size, the greater the adjustment from <span class="math notranslate nohighlight">\(x_t\)</span> to <span class="math notranslate nohighlight">\(x_{t+1}\)</span>, with 1 meaning full adjustment. A larger step-size reduces the occurrence of convergence issues but increases computation time. Step-size of <span class="math notranslate nohighlight">\(0.1\)</span> will ensure convergence for the parameters described in the paper</p></td>
+<td><p><span class="math notranslate nohighlight">\(0.1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">payoff_set</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(M \times N\)</span> <em>ndarray</em></p></td>
+<td><p><strong>Payoff matrix</strong>: the dimensions of this input must be <span class="math notranslate nohighlight">\((M,N)\)</span>. If the user wishes to use the payoff matrix specified in the paper parameterized by <span class="math notranslate nohighlight">\(r\)</span>, they can simply change <span class="math notranslate nohighlight">\(r\)</span> without changing the payoff matrix</p></td>
+<td><p><span class="math notranslate nohighlight">\([[0,2r],[r,0],[5,5]]\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">solve</span></code> generates the following outputs:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Notation in manuscript</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">objective</span></code></p></td>
+<td><p><em>float</em></p></td>
+<td><p>Optimal value of <strong>objective function</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb{E}[u(x,a)] - \lambda \mathbb{I} + \xi \mathbb{R}\)</span> given <span class="math notranslate nohighlight">\((p^*,q^*,\mu^*)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(M \times N\)</span> <em>ndarray</em></p></td>
+<td><p><strong>State-dependent decision rule</strong>: entry <span class="math notranslate nohighlight">\((i,j)\)</span> of this array corresponds to the probability of choosing action <span class="math notranslate nohighlight">\(i\)</span> given state <span class="math notranslate nohighlight">\(j\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p^*(a|x)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(M \times 1\)</span> <em>ndarray</em></p></td>
+<td><p><strong>Worst-case marginal distribution</strong> over actions</p></td>
+<td><p><span class="math notranslate nohighlight">\(q^*(a)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mu</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(N \times 1\)</span> <em>ndarray</em></p></td>
+<td><p><strong>Worst-case prior</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu^*\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">information</span></code></p></td>
+<td><p><em>float</em></p></td>
+<td><p>Optimal value of <strong>mutual information</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb{I}(p^*,q^*)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">entropy</span></code></p></td>
+<td><p><em>float</em></p></td>
+<td><p>Optimal value of <strong>relative entropy</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb{R}(\mu^*,\hat{\mu})\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="quick-start">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1.2 Quick Start</a><a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<p>Let’s start by importing the necessary Python libraries and functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">src</span> <span class="kn">import</span> <span class="n">solve</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">save_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we can specify the <span class="math notranslate nohighlight">\((\alpha,\lambda,\xi)\)</span> grid:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Arrays</span>
+<span class="n">alpha_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Lam_array</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">]</span>
+<span class="n">xi_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">alpha_array</span><span class="p">,</span> <span class="n">Lam_array</span><span class="p">,</span> <span class="n">xi_array</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+
+<span class="c1">#Initialize grid of results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">alpha_array</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">Lam_array</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">xi_array</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we specify the parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Parameters</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Number of states</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Number of actions</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">7.5</span> <span class="c1"># Parameterization of the payoff set</span>
+<span class="n">payoff_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]])</span> <span class="c1"># If you want to use the payoff matrix in the paper, do not change this variable; instead, change r</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>  <span class="c1"># Error tolerance</span>
+
+<span class="c1"># Time-step increments</span>
+<span class="n">q_step</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p_step</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">mu_step</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Baseline prior</span>
+<span class="n">hat_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="c1"># Uniform prior </span>
+
+<span class="c1"># Check that payoff matrix is correctly specified</span>
+<span class="k">if</span> <span class="n">payoff_set</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Payoff set must be of shape (M, N)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Collect parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">hat_mu</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">q_step</span><span class="p">,</span> <span class="n">p_step</span><span class="p">,</span> <span class="n">mu_step</span><span class="p">,</span><span class="n">payoff_set</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we run <code class="docutils literal notranslate"><span class="pre">solve</span></code> at each point in our <span class="math notranslate nohighlight">\(\alpha,\lambda,\xi\)</span> grid. Under the default settings, this takes 40 seconds.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alpha_array</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">lam</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Lam_array</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xi_array</span><span class="p">)):</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">lam</span><span class="p">,</span><span class="n">xi</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">lam</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">lam</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">lam</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The user can save the results as a <code class="docutils literal notranslate"><span class="pre">pkl</span></code> file with name specified by <code class="docutils literal notranslate"><span class="pre">results_name</span></code> using the following code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_name</span> <span class="o">=</span> <span class="s1">&#39;experiment1&#39;</span>
+<span class="n">save_results</span><span class="p">(</span><span class="n">results_name</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">alpha_array</span><span class="p">,</span> <span class="n">Lam_array</span><span class="p">,</span> <span class="n">xi_array</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1.3 Plotting</a><a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
+<p>The user can plot the results along a chosen axis, holding the other two axes fixed, using the code below.</p>
+<p>Specifying <code class="docutils literal notranslate"><span class="pre">axis</span></code> as 0 will plot the results with <span class="math notranslate nohighlight">\(\alpha\)</span> on the <span class="math notranslate nohighlight">\(x\)</span> axis; 1 will plot <span class="math notranslate nohighlight">\(\lambda\)</span>; and 2 will plot <span class="math notranslate nohighlight">\(\xi\)</span>. The other two variables will be fixed at the indices specified by <code class="docutils literal notranslate"><span class="pre">fixed_values</span></code>. For example, the default settings below plot the results with <span class="math notranslate nohighlight">\(\xi\)</span> on the <span class="math notranslate nohighlight">\(x\)</span> axis, with <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> fixed at the first entry of their respective arrays. The plot will automatically be saved in the <code class="docutils literal notranslate"><span class="pre">plots</span></code> folder under <code class="docutils literal notranslate"><span class="pre">plot_name</span></code>, which can be specified below.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axis</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">fixed_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_name</span> <span class="o">=</span> <span class="s1">&#39;plot1&#39;</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">alpha_array</span><span class="p">,</span> <span class="n">Lam_array</span><span class="p">,</span> <span class="n">xi_array</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">fixed_values</span><span class="p">,</span><span class="n">plot_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="demo-1">
+<a class="reference internal image-reference" href="_images/demo_1.png"><img alt="_images/demo_1.png" src="_images/demo_1.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Example figure taken from Figure 2 of the paper.</span><a class="headerlink" href="#demo-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mutual-information-constraint">
+<h1><a class="toc-backref" href="#id8" role="doc-backlink">2 Mutual Information Constraint</a><a class="headerlink" href="#mutual-information-constraint" title="Link to this heading">#</a></h1>
+<section id="solution-overview">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">2.1 Solution Overview</a><a class="headerlink" href="#solution-overview" title="Link to this heading">#</a></h2>
+<p>In the following section, we constrain mutual information and allow <span class="math notranslate nohighlight">\(\lambda\)</span> to vary to satisfy this constraint:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{I}(p,q) \leq \kappa
+\]</div>
+<p>To find the optimal <span class="math notranslate nohighlight">\(\lambda\)</span>, we perform a grid search over <code class="docutils literal notranslate"><span class="pre">Lam_grid</span></code> and find the <span class="math notranslate nohighlight">\(\lambda\)</span> which maximises the objective while satisfying the above constraint. This is carried out by the function <code class="docutils literal notranslate"><span class="pre">find_min_Lam</span></code>. Therefore instead of defining <code class="docutils literal notranslate"><span class="pre">Lam_array</span></code>, we define the values of <code class="docutils literal notranslate"><span class="pre">kappa</span></code> for which we want to find a solution and solve for the <code class="docutils literal notranslate"><span class="pre">implied_lambda</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kappa_array</span></code></p></td>
+<td><p><em>ndarray</em></p></td>
+<td><p>Array of <strong>constraints</strong> on mutual information</p></td>
+<td><p><span class="math notranslate nohighlight">\([0.04]\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Lam_grid</span></code></p></td>
+<td><p><em>ndarray</em></p></td>
+<td><p><strong>Gridpoints</strong> of <span class="math notranslate nohighlight">\(\lambda\)</span>: this must be sufficiently large to ensure accuracy</p></td>
+<td><p>100 evenly spaced points between 1 and 10</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id1">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">2.2 Quick Start</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>First, define the new parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">src</span> <span class="kn">import</span> <span class="n">find_min_Lam</span>
+<span class="n">kappa_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.04</span><span class="p">])</span>
+<span class="n">Lam_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also need to define all the previous parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Arrays</span>
+<span class="n">alpha_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">xi_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">alpha_array</span><span class="p">,</span> <span class="n">kappa_array</span><span class="p">,</span> <span class="n">xi_array</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+
+<span class="c1">#Initialize grid of results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">alpha_array</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">kappa_array</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">xi_array</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> 
+<span class="n">implied_lambda</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">alpha_array</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">kappa_array</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">xi_array</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> 
+
+<span class="c1">#Parameters</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Number of states</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Number of actions</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">7.5</span> <span class="c1"># Parameterization of the payoff set</span>
+<span class="n">payoff_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]])</span> <span class="c1"># If you want to use the payoff matrix in the paper, do not change this variable; instead, change r</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>  <span class="c1"># Error tolerance</span>
+
+<span class="c1"># Time-step increments</span>
+<span class="n">q_step</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p_step</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">mu_step</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Baseline prior</span>
+<span class="n">hat_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="c1"># Uniform prior </span>
+
+<span class="c1"># Check that payoff matrix is correctly specified</span>
+<span class="k">if</span> <span class="n">payoff_set</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Payoff set must be of shape (M, N)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Collect parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">hat_mu</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">q_step</span><span class="p">,</span> <span class="n">p_step</span><span class="p">,</span> <span class="n">mu_step</span><span class="p">,</span><span class="n">payoff_set</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we run <code class="docutils literal notranslate"><span class="pre">find_min_Lam</span></code> on our <span class="math notranslate nohighlight">\(\lambda\)</span> grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alpha_array</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">kappa</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kappa_array</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xi_array</span><span class="p">)):</span>
+            <span class="n">implied_lambda</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_min_Lam</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">K</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">params</span><span class="p">,</span><span class="n">Lam_grid</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">implied_lambda</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">][</span><span class="s1">&#39;implied_lambda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">implied_lambda</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">][</span><span class="s1">&#39;implied_lambda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">implied_lambda</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">kappa</span><span class="p">,</span><span class="n">xi</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">2.3 Plotting</a><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>As before, we can use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function to visualize the solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axis</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">fixed_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_name</span> <span class="o">=</span> <span class="s1">&#39;plot1&#39;</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">alpha_array</span><span class="p">,</span> <span class="n">Lam_array</span><span class="p">,</span> <span class="n">xi_array</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">fixed_values</span><span class="p">,</span><span class="n">plot_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="demo-2">
+<a class="reference internal image-reference" href="_images/demo_2.png"><img alt="_images/demo_2.png" src="_images/demo_2.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Example figure taken from Figure 4 of the paper.</span><a class="headerlink" href="#demo-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Notebook: Robust Inattentive Discrete Choice</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#base-case">1 Base Case</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-code-overview">1.1 Solution Code Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">1.2 Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">1.3 Plotting</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-constraint">2 Mutual Information Constraint</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-overview">2.1 Solution Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2 Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3 Plotting</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

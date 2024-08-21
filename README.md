@@ -1,5 +1,6 @@
 This is the accompanying code for Hansen, Miao and Xing (2024).
 The python code for producing each of the figures in the paper can be found under src.
+To produce figure 1, use parameters....
 
 Dependencies:
 - numpy
