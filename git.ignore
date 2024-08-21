@@ -1,7 +1,0 @@
-# Ignore Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-__pycache__
-plots/
-results/
-
-#https://minimumhippo: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@github.com/lphansen/rational_inattention.git (push)
